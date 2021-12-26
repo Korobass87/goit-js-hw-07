@@ -14,12 +14,6 @@ const galerryItm = galleryItems.map((item) =>
 galerry.insertAdjacentHTML('afterbegin', galerryItm)
 let gallery = new SimpleLightbox('.gallery a', {captionsData: "alt", captionDelay: 250});
 
-
-console.log(gallery.defaultOptions.captionsData)
-
 gallery.on('show.simplelightbox', function (event) {
          event.preventDefault();
        });
-
-
-

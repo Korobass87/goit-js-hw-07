@@ -19,7 +19,7 @@ const galerryItm = galleryItems.map((item) =>
 galerry.insertAdjacentHTML('afterbegin', galerryItm)
 
 galerry.addEventListener('click', onGalerryClick)
-
+instance.show()
 function onGalerryClick(event) {
     event.preventDefault();
     
@@ -28,17 +28,37 @@ function onGalerryClick(event) {
     }
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">`)
+    console.log(instance.show())
+    
 
-    instance.show()
-
-    document.addEventListener("keydown", (event) => {
+  document.addEventListener("keydown", escCloseModal)
+  
+  function escCloseModal(event) {
+    
         if (event.code !== "Escape") { 
             return
-        }
+    }
+        console.log("Работает")
         instance.close()
-    })
+  }
+  
+  document.addEventListener("keydown", removeEscCloseModal)
+  
+  function removeEscCloseModal(event) {
+        if (event.code !== "Escape") { 
+            return
+    }
+    console.log("тогда этот работает")
+         document.removeEventListener("keydown", escCloseModal)
+  }
 
- }
+  
+  
+
+}
+ 
+
+ 
 
 
 
